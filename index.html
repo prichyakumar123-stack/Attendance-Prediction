@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Student Performance Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🎓 Student Performance Prediction</h1>
+
+        <p>AI & Machine Learning Based Prediction System</p>
+
+        <form action="/predict" method="POST">
+
+            <label>Attendance (%)</label>
+            <input type="number" name="attendance" min="0" max="100" required>
+
+            <label>Previous Marks (%)</label>
+            <input type="number" name="previous_marks" min="0" max="100" required>
+
+            <label>Assignment Marks (%)</label>
+            <input type="number" name="assignment_marks" min="0" max="100" required>
+
+            <label>Study Hours per Day</label>
+            <input type="number" name="study_hours" min="0" max="24" step="0.5" required>
+
+            <label>Internal Marks (%)</label>
+            <input type="number" name="internal_marks" min="0" max="100" required>
+
+            <button type="submit">
+                Predict Performance
+            </button>
+
+        </form>
+
+        {% if prediction %}
+
+        <div class="result">
+
+            <h2>Prediction Result</h2>
+
+            <h3>{{ prediction }}</h3>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
